@@ -18,7 +18,7 @@ npm run deploy:prod
 
 # Hosted MCP server
 
-This repository also hosts `@kontent-ai/mcp-server"` under 
+This repository also hosts `@kontent-ai/mcp-server` under 
 
 localhost: ```http://localhost:3000/api/mcp```
 deployed: ```https://migration-hackaton-nextjs.vercel.app/api/mcp```
@@ -26,5 +26,5 @@ deployed: ```https://migration-hackaton-nextjs.vercel.app/api/mcp```
 # Running MCP inspector
 
 ```bash
-npx @modelcontextprotocol/inspector@latest http://localhost:3000 undefined
+npx @modelcontextprotocol/inspector@latest
 ```
