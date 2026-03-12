@@ -12,12 +12,6 @@
 				"noUnusedImports": {
 					"fix": "safe",
 					"level": "error"
-				},
-				"useImportExtensions": {
-					"level": "error",
-					"options": {
-						"forceJsExtensions": true
-					}
 				}
 			}
 		}
