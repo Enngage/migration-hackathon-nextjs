@@ -1,4 +1,5 @@
 import { getPlans } from "./plans";
+import { resolveAboutUsUrl, resolveHomeUrl, resolvePricingUrl, resolveProductUrl } from "./utils/url-resolutions";
 
 export type MenuItem = {
 	readonly label: string;
@@ -23,26 +24,26 @@ export type Menu = {
 
 export const getMenu = async (): Promise<Menu> => {
 	const plans = await getPlans();
-	const productItems = plans.map((p) => ({ label: p.name, href: `/products/${p.codename}` }));
+	const productItems = plans.map((p) => ({ label: p.name, href: resolveProductUrl(p.codename) }));
 
 	return {
 		mainItems: [
 			{ label: "Products", children: productItems },
-			{ label: "Pricing", href: "/pricing" },
-			{ label: "About Us", href: "/about-us" },
+			{ label: "Pricing", href: resolvePricingUrl() },
+			{ label: "About Us", href: resolveAboutUsUrl() },
 		],
 		footerSections: [
 			{ title: "Products", items: productItems },
 			{
 				title: "Customers",
 				items: [
-					{ label: "Pricing", href: "/pricing" },
-					{ label: "About Us", href: "/about-us" },
+					{ label: "Pricing", href: resolvePricingUrl() },
+					{ label: "About Us", href: resolveAboutUsUrl() },
 				],
 			},
 			{
 				title: "Company",
-				items: [{ label: "Home", href: "/" }],
+				items: [{ label: "Home", href: resolveHomeUrl() }],
 			},
 		],
 	};
