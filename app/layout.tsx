@@ -24,7 +24,7 @@ export default async function RootLayout({
 
 	return (
 		<html lang="en">
-			<body className={`${redHatDisplay.variable} font-[family-name:var(--font-red-hat-display)] antialiased`}>
+			<body className={`${redHatDisplay.variable} antialiased`}>
 				<header className="sticky top-0 z-10 bg-white shadow-sm">
 					<div className="max-w-6xl mx-auto flex items-center px-8 h-20">
 						<Link href="/" className="text-xl font-bold text-[#1B273A]">

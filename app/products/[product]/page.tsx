@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getPlans } from "@/lib/plans";
 
 type Props = {
-	params: Promise<{ product: string }>;
+	readonly params: Promise<{ readonly product: string }>;
 };
 
 export const generateStaticParams = async () => {
