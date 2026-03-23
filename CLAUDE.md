@@ -23,9 +23,17 @@ This is a **Next.js App Router** application.
 Required in `.env.local` (see `env.template`):
 - `VERCEL_OIDC_TOKEN` — Used for Vercel deployments
 
+## Code Style
+
+Prefer a functional approach:
+- Use `const` by default; avoid `let` unless mutation is truly necessary.
+- Avoid mutating objects/arrays — use spread, `map`, `filter`, `reduce` instead.
+- Keep functions small and single-purpose.
+- Prefer pure functions with explicit inputs/outputs over side effects.
+- Favour composition of small functions over large monolithic ones.
+
 ## Tooling
 
 - **Formatter/Linter**: Biome (primary) + ESLint. Biome is configured as the default VS Code formatter and runs on save. Line width: 140, indent: 4 spaces (tabs).
 - **TypeScript**: Strict mode, path alias `@/*` maps to the repo root.
 - **Tailwind CSS 4**: Via `@tailwindcss/postcss` PostCSS plugin.
-- **Kontent.ai type declarations**: `kontent-mcp.d.ts` declares TypeScript types for all MCP tool modules from `@kontent-ai/mcp-server/build/tools/`.
