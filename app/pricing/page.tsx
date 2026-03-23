@@ -1,7 +1,9 @@
 import { BarChart2, Headphones, type LucideIcon, PieChart, ShieldCheck, SlidersHorizontal, Smartphone } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { getPlans } from "@/lib/plans";
+import { resolveProductUrl } from "@/lib/utils/url-resolutions";
 
 export const metadata: Metadata = {
 	title: "Pricing",
@@ -86,6 +88,12 @@ export default async function PricingPage() {
 										{plan.description}
 									</p>
 								</div>
+								<Link
+									href={resolveProductUrl(plan.codename)}
+									className={`block text-center py-3 px-6 rounded font-medium text-sm transition-colors mb-6 ${plan.highlighted ? "bg-white text-[#1B273A] hover:bg-zinc-100" : "bg-[#1B273A] text-white hover:bg-[#414D63]"}`}
+								>
+									Learn more
+								</Link>
 								<ul className="space-y-3 mb-8 flex-1">
 									{plan.features.map((feature) => (
 										<li key={feature} className="flex items-start gap-2">
