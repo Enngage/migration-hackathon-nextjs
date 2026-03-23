@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Red_Hat_Display } from "next/font/google";
 import Link from "next/link";
+import { plans } from "@/lib/plans";
 import "./globals.css";
 
 const redHatDisplay = Red_Hat_Display({
@@ -48,22 +49,24 @@ export default function RootLayout({
 							<div>
 								<h3 className="text-xs font-semibold mb-4 text-zinc-400 uppercase tracking-wider">Products</h3>
 								<ul className="space-y-2">
-									<li><Link href="/products" className="text-sm text-zinc-300 hover:text-white transition-colors">Classic</Link></li>
-									<li><Link href="/products" className="text-sm text-zinc-300 hover:text-white transition-colors">Black</Link></li>
-									<li><Link href="/products" className="text-sm text-zinc-300 hover:text-white transition-colors">Corporate</Link></li>
-									<li><Link href="/pricing" className="text-sm text-zinc-300 hover:text-white transition-colors">Pricing</Link></li>
+									{plans.map((plan) => (
+										<li key={plan.codename}>
+											<Link href={`/products/${plan.codename}`} className="text-sm text-zinc-300 hover:text-white transition-colors">{plan.name}</Link>
+										</li>
+									))}
 								</ul>
 							</div>
 							<div>
 								<h3 className="text-xs font-semibold mb-4 text-zinc-400 uppercase tracking-wider">Customers</h3>
 								<ul className="space-y-2">
+									<li><Link href="/pricing" className="text-sm text-zinc-300 hover:text-white transition-colors">Pricing</Link></li>
 									<li><Link href="/about-us" className="text-sm text-zinc-300 hover:text-white transition-colors">About us</Link></li>
 								</ul>
 							</div>
 							<div>
 								<h3 className="text-xs font-semibold mb-4 text-zinc-400 uppercase tracking-wider">Company</h3>
 								<ul className="space-y-2">
-									<li><Link href="/about-us" className="text-sm text-zinc-300 hover:text-white transition-colors">About us</Link></li>
+									<li><Link href="/" className="text-sm text-zinc-300 hover:text-white transition-colors">Home</Link></li>
 								</ul>
 							</div>
 						</div>
