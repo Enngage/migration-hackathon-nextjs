@@ -25,9 +25,9 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 };
 
 export default async function ProductPage({ params }: Props) {
-	const { product } = await params;
+	const { codename } = await params;
 	const plans = await getPlans();
-	const plan = plans.find((p) => p.codename === product);
+	const plan = plans.find((p) => p.codename === codename);
 
 	if (!plan) {
 		notFound();
