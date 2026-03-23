@@ -16,7 +16,7 @@ npm run deploy:prod         # Deploy to production on Vercel
 
 ## Architecture
 
-This is a **Next.js App Router** application.
+This is a **Next.js App Router** application. All routing, layouts, and pages use the `app/` directory conventions (Server Components by default, `"use client"` only when needed for interactivity or browser APIs).
 
 ### Environment Variables
 
