@@ -26,7 +26,16 @@ export default function RootLayout({
 					<div className="max-w-6xl mx-auto flex items-center px-8 h-20">
 						<Link href="/" className="text-xl font-bold text-[#1B273A]">Coin</Link>
 						<nav className="ml-auto flex items-center gap-8">
-							<Link href="/products" className="text-sm font-medium text-[#414D63] hover:text-[#1B273A] transition-colors">Products</Link>
+							<div className="relative group">
+								<span className="text-sm font-medium text-[#414D63] group-hover:text-[#1B273A] transition-colors cursor-default select-none">Products</span>
+								<div className="absolute top-full left-0 pt-2 hidden group-hover:block z-20">
+									<div className="bg-white shadow-lg rounded-lg py-1 min-w-36">
+										<Link href="/products/classic" className="block px-4 py-2 text-sm text-[#414D63] hover:text-[#1B273A] hover:bg-zinc-50 transition-colors">Classic</Link>
+										<Link href="/products/black" className="block px-4 py-2 text-sm text-[#414D63] hover:text-[#1B273A] hover:bg-zinc-50 transition-colors">Black</Link>
+										<Link href="/products/corporate" className="block px-4 py-2 text-sm text-[#414D63] hover:text-[#1B273A] hover:bg-zinc-50 transition-colors">Corporate</Link>
+									</div>
+								</div>
+							</div>
 							<Link href="/pricing" className="text-sm font-medium text-[#414D63] hover:text-[#1B273A] transition-colors">Pricing</Link>
 							<Link href="/about-us" className="text-sm font-medium text-[#414D63] hover:text-[#1B273A] transition-colors">About Us</Link>
 						</nav>
