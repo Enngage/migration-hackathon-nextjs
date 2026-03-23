@@ -8,7 +8,7 @@ export type Plan = {
 	readonly highlighted?: boolean;
 };
 
-export const plans: readonly Plan[] = [
+const plans: readonly Plan[] = [
 	{
 		codename: "classic",
 		name: "Coin Classic",
@@ -67,3 +67,5 @@ export const plans: readonly Plan[] = [
 		],
 	},
 ] as const;
+
+export const getPlans = (): Promise<readonly Plan[]> => Promise.resolve(plans);

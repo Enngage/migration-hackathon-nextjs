@@ -35,5 +35,5 @@ Prefer a functional approach:
 ## Tooling
 
 - **Formatter/Linter**: Biome (primary) + ESLint. Biome is configured as the default VS Code formatter and runs on save. Line width: 140, indent: 4 spaces (tabs).
-- **TypeScript**: Strict mode, path alias `@/*` maps to the repo root.
+- **TypeScript**: Strict mode, path alias `@/*` maps to the repo root. Do not include `.ts` or `.tsx` extensions in import paths — `allowImportingTsExtensions` is not enabled and the build will fail. Biome's `useImportExtensions` rule is disabled for this reason.
 - **Tailwind CSS 4**: Via `@tailwindcss/postcss` PostCSS plugin.

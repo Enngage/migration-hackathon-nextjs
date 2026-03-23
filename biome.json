@@ -12,7 +12,8 @@
 				"noUnusedImports": {
 					"fix": "safe",
 					"level": "error"
-				}
+				},
+				"useImportExtensions": "off"
 			}
 		}
 	},

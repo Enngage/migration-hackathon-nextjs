@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import { plans } from "@/lib/plans";
+import { getPlans } from "@/lib/plans";
 
 type Props = {
 	params: Promise<{ product: string }>;
 };
 
-export const generateStaticParams = () =>
-	plans.map((plan) => ({ product: plan.codename }));
+export const generateStaticParams = async () => {
+	const plans = await getPlans();
+	return plans.map((plan) => ({ product: plan.codename }));
+};
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
 	const { product } = await params;
+	const plans = await getPlans();
 	const plan = plans.find((p) => p.codename === product);
 
 	if (!plan) {
@@ -22,6 +26,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 export default async function ProductPage({ params }: Props) {
 	const { product } = await params;
+	const plans = await getPlans();
 	const plan = plans.find((p) => p.codename === product);
 
 	if (!plan) {
@@ -42,7 +47,7 @@ export default async function ProductPage({ params }: Props) {
 			<section className="py-20 bg-[#F4F4F4]">
 				<div className="max-w-4xl mx-auto px-8 flex flex-col md:flex-row gap-16 items-start">
 					<div className="flex-shrink-0">
-						<img src={plan.image} alt={plan.name} className="h-64 object-contain" />
+						<Image src={plan.image} alt={plan.name} width={400} height={256} className="h-64 w-auto object-contain" />
 					</div>
 					<div className="flex-1">
 						<p className="text-3xl font-extrabold text-[#1B273A] mb-8">{plan.price}</p>

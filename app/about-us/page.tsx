@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
 	title: "About Us",
@@ -44,7 +45,10 @@ export default function AboutUsPage() {
 				<div className="max-w-3xl mx-auto px-8">
 					<h2 className="text-3xl font-bold text-[#1B273A] mb-6">Our company</h2>
 					<p className="text-lg text-[#414D63] leading-relaxed">
-						At Coin, we believe everyone deserves access to banking that works for them. We combine cutting-edge technology with a relentless focus on the customer to deliver financial products that are simple, transparent, and built for real life. From everyday spending to saving for the future, we&apos;re here to help you manage your money with confidence.
+						At Coin, we believe everyone deserves access to banking that works for them. We combine cutting-edge technology with
+						a relentless focus on the customer to deliver financial products that are simple, transparent, and built for real
+						life. From everyday spending to saving for the future, we&apos;re here to help you manage your money with
+						confidence.
 					</p>
 				</div>
 			</section>
@@ -55,13 +59,17 @@ export default function AboutUsPage() {
 					<h2 className="text-2xl font-bold text-[#1B273A] mb-6">Our Story</h2>
 					<div className="space-y-6 text-lg text-[#414D63] leading-relaxed">
 						<p>
-							Coin was founded in 2014 by Poppy Terrell, who saw firsthand how broken traditional banking was for ordinary people. Armed with a vision and a small team, she set out to build a bank that actually put customers first.
+							Coin was founded in 2014 by Poppy Terrell, who saw firsthand how broken traditional banking was for ordinary
+							people. Armed with a vision and a small team, she set out to build a bank that actually put customers first.
 						</p>
 						<p>
-							In 2015, Coin partnered with Marc Young, and the company was accepted into Y Combinator — a turning point that accelerated growth and brought world-class engineering talent to the team. By 2017, Coin had grown to serve hundreds of thousands of customers across the United States.
+							In 2015, Coin partnered with Marc Young, and the company was accepted into Y Combinator — a turning point that
+							accelerated growth and brought world-class engineering talent to the team. By 2017, Coin had grown to serve
+							hundreds of thousands of customers across the United States.
 						</p>
 						<p>
-							In 2019, Coin was acquired by Colorful Collective, giving the company the resources to expand globally. Today, Coin operates from 6 offices around the world and continues to push the boundaries of what a modern bank can be.
+							In 2019, Coin was acquired by Colorful Collective, giving the company the resources to expand globally. Today,
+							Coin operates from 6 offices around the world and continues to push the boundaries of what a modern bank can be.
 						</p>
 					</div>
 				</div>
@@ -74,9 +82,17 @@ export default function AboutUsPage() {
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 						{leaders.map((leader) => (
 							<div key={leader.name}>
-								<img src={leader.image} alt={leader.name} className="w-20 h-20 rounded-full object-cover mb-4" />
+								<Image
+									src={leader.image}
+									alt={leader.name}
+									width={80}
+									height={80}
+									className="rounded-full object-cover mb-4"
+								/>
 								<h3 className="text-xl font-bold text-[#1B273A]">{leader.name}</h3>
-								<p className="text-sm text-[#6E6E6E] mb-3">{leader.title} · {leader.location}</p>
+								<p className="text-sm text-[#6E6E6E] mb-3">
+									{leader.title} · {leader.location}
+								</p>
 								<p className="text-base text-[#414D63] leading-relaxed">{leader.bio}</p>
 							</div>
 						))}

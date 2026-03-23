@@ -1,6 +1,7 @@
+import { BarChart2, Headphones, type LucideIcon, PieChart, ShieldCheck, SlidersHorizontal, Smartphone } from "lucide-react";
 import type { Metadata } from "next";
-import { ShieldCheck, Smartphone, Headphones, BarChart2, PieChart, SlidersHorizontal, type LucideIcon } from "lucide-react";
-import { plans } from "@/lib/plans";
+import Image from "next/image";
+import { getPlans } from "@/lib/plans";
 
 export const metadata: Metadata = {
 	title: "Pricing",
@@ -45,7 +46,9 @@ const includedFeatures: readonly IncludedFeature[] = [
 	},
 ];
 
-export default function PricingPage() {
+export default async function PricingPage() {
+	const plans = await getPlans();
+
 	return (
 		<>
 			{/* Hero */}
@@ -66,16 +69,36 @@ export default function PricingPage() {
 								className={`rounded-2xl p-8 flex flex-col h-full ${plan.highlighted ? "bg-[#1B273A] text-white shadow-xl" : "bg-white text-[#1B273A]"}`}
 							>
 								<div className="mb-6">
-									<img src={plan.image} alt={plan.name} className="h-32 object-contain mb-6" />
-									<h2 className={`text-xl font-bold mb-1 ${plan.highlighted ? "text-white" : "text-[#1B273A]"}`}>{plan.name}</h2>
-									<p className={`text-3xl font-extrabold mb-4 ${plan.highlighted ? "text-white" : "text-[#1B273A]"}`}>{plan.price}</p>
-									<p className={`text-sm leading-relaxed ${plan.highlighted ? "text-zinc-300" : "text-[#414D63]"}`}>{plan.description}</p>
+									<Image
+										src={plan.image}
+										alt={plan.name}
+										width={300}
+										height={128}
+										className="h-32 w-auto object-contain mb-6"
+									/>
+									<h2 className={`text-xl font-bold mb-1 ${plan.highlighted ? "text-white" : "text-[#1B273A]"}`}>
+										{plan.name}
+									</h2>
+									<p className={`text-3xl font-extrabold mb-4 ${plan.highlighted ? "text-white" : "text-[#1B273A]"}`}>
+										{plan.price}
+									</p>
+									<p className={`text-sm leading-relaxed ${plan.highlighted ? "text-zinc-300" : "text-[#414D63]"}`}>
+										{plan.description}
+									</p>
 								</div>
 								<ul className="space-y-3 mb-8 flex-1">
 									{plan.features.map((feature) => (
 										<li key={feature} className="flex items-start gap-2">
-											<span className={`mt-1 shrink-0 text-sm ${plan.highlighted ? "text-zinc-300" : "text-[#414D63]"}`}>✓</span>
-											<span className={`text-sm leading-relaxed ${plan.highlighted ? "text-zinc-300" : "text-[#414D63]"}`}>{feature}</span>
+											<span
+												className={`mt-1 shrink-0 text-sm ${plan.highlighted ? "text-zinc-300" : "text-[#414D63]"}`}
+											>
+												✓
+											</span>
+											<span
+												className={`text-sm leading-relaxed ${plan.highlighted ? "text-zinc-300" : "text-[#414D63]"}`}
+											>
+												{feature}
+											</span>
 										</li>
 									))}
 								</ul>
