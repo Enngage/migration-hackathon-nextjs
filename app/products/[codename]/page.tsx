@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getPlans } from "@/lib/plans";
 
 type Props = {
-	readonly params: Promise<{ readonly product: string }>;
+	readonly params: Promise<{ readonly codename: string }>;
 };
 
 export const generateStaticParams = async () => {
@@ -13,9 +13,9 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-	const { product } = await params;
+	const { codename } = await params;
 	const plans = await getPlans();
-	const plan = plans.find((p) => p.codename === product);
+	const plan = plans.find((p) => p.codename === codename);
 
 	if (!plan) {
 		return { title: "Product Not Found" };
