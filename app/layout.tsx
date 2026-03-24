@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Red_Hat_Display } from "next/font/google";
 import Link from "next/link";
+import { Logo } from "@/app/components/logo";
 import { getMenu } from "@/lib/menu";
 import { resolveHomeUrl } from "@/lib/utils/url-resolutions";
 import "./globals.css";
@@ -28,8 +29,8 @@ export default async function RootLayout({
 			<body className={`${redHatDisplay.variable} antialiased`}>
 				<header className="sticky top-0 z-10 bg-white shadow-sm">
 					<div className="max-w-6xl mx-auto flex items-center px-8 h-20">
-						<Link href={resolveHomeUrl()} className="text-xl font-bold text-[#1B273A]">
-							Coin
+						<Link href={resolveHomeUrl()} aria-label="Coin — go to homepage">
+							<Logo />
 						</Link>
 						<nav className="ml-auto flex items-center gap-8">
 							{menu.mainItems.map((item) =>
