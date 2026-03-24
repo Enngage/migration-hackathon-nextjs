@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getPlans } from "@/lib/plans";
+import { getPlanByCodename, getPlans } from "@/lib/plans";
 
 type Props = {
 	readonly params: Promise<{ readonly codename: string }>;
@@ -9,13 +9,12 @@ type Props = {
 
 export const generateStaticParams = async () => {
 	const plans = await getPlans();
-	return plans.map((plan) => ({ product: plan.codename }));
+	return plans.map((plan) => ({ codename: plan.codename }));
 };
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
 	const { codename } = await params;
-	const plans = await getPlans();
-	const plan = plans.find((p) => p.codename === codename);
+	const plan = await getPlanByCodename(codename);
 
 	if (!plan) {
 		return { title: "Product Not Found" };
@@ -26,8 +25,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 export default async function ProductPage({ params }: Props) {
 	const { codename } = await params;
-	const plans = await getPlans();
-	const plan = plans.find((p) => p.codename === codename);
+	const plan = await getPlanByCodename(codename);
 
 	if (!plan) {
 		notFound();

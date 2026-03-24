@@ -69,3 +69,8 @@ const plans: readonly Plan[] = [
 ] as const;
 
 export const getPlans = (): Promise<readonly Plan[]> => Promise.resolve(plans);
+
+export const getPlanByCodename = async (codename: string): Promise<Plan | undefined> => {
+	const allPlans = await getPlans();
+	return allPlans.find((p) => p.codename.toLowerCase() === codename.toLowerCase());
+};
