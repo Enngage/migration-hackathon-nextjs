@@ -17,22 +17,22 @@
 	},
 	"dependencies": {
 		"lucide-react": "^1.0.1",
-		"next": "16.1.6",
+		"next": "16.2.1",
 		"react": "19.2.4",
 		"react-dom": "19.2.4"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.6",
+		"@biomejs/biome": "2.4.8",
 		"@kontent-ai/biome-config": "0.7.0",
 		"@kontent-ai/eslint-config": "2.4.1",
-		"@tailwindcss/postcss": "^4.2.1",
-		"@types/node": "^25.4.0",
+		"@tailwindcss/postcss": "^4.2.2",
+		"@types/node": "^25.5.0",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"eslint": "^9",
-		"eslint-config-next": "16.1.6",
-		"tailwindcss": "^4.2.1",
-		"typescript": "^5.9.3",
-		"vercel": "^50.32.3"
+		"eslint-config-next": "16.2.1",
+		"tailwindcss": "^4.2.2",
+		"typescript": "^6.0.2",
+		"vercel": "^50.35.0"
 	}
 }
