@@ -23,8 +23,7 @@ export type Menu = {
 };
 
 export const getMenu = async (): Promise<Menu> => {
-	const plans = await getPlans();
-	const productItems = plans.map((p) => ({ label: p.name, href: resolveProductUrl(p.codename) }));
+	const productItems = (await getPlans()).map((p) => ({ label: p.name, href: resolveProductUrl(p.codename) }));
 
 	return {
 		mainItems: [
