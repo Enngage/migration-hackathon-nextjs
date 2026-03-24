@@ -1,5 +1,5 @@
 import { getPlans } from "./plans";
-import { resolveAboutUsUrl, resolveHomeUrl, resolvePricingUrl, resolveProductUrl } from "./utils/url-resolutions";
+import { resolveAboutUsUrl, resolveHomeUrl, resolvePricingUrl, resolveProductsUrl, resolveProductUrl } from "./utils/url-resolutions";
 
 export type MenuItem = {
 	readonly label: string;
@@ -28,12 +28,12 @@ export const getMenu = async (): Promise<Menu> => {
 
 	return {
 		mainItems: [
-			{ label: "Products", children: productItems },
+			{ label: "Products", href: resolveProductsUrl(), children: productItems },
 			{ label: "Pricing", href: resolvePricingUrl() },
 			{ label: "About Us", href: resolveAboutUsUrl() },
 		],
 		footerSections: [
-			{ title: "Products", items: productItems },
+			{ title: "Products", items: [{ label: "All Products", href: resolveProductsUrl() }, ...productItems] },
 			{
 				title: "Customers",
 				items: [

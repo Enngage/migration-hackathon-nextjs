@@ -35,9 +35,18 @@ export default async function RootLayout({
 							{menu.mainItems.map((item) =>
 								item.children ? (
 									<div key={item.label} className="relative group">
-										<span className="text-sm font-medium text-[#414D63] group-hover:text-[#1B273A] transition-colors cursor-default select-none">
-											{item.label}
-										</span>
+										{item.href ? (
+											<Link
+												href={item.href}
+												className="text-sm font-medium text-[#414D63] hover:text-[#1B273A] transition-colors"
+											>
+												{item.label}
+											</Link>
+										) : (
+											<span className="text-sm font-medium text-[#414D63] group-hover:text-[#1B273A] transition-colors cursor-default select-none">
+												{item.label}
+											</span>
+										)}
 										<div className="absolute top-full left-0 pt-2 hidden group-hover:block z-20">
 											<div className="bg-white shadow-lg rounded-lg py-1 min-w-36">
 												{item.children.map((child) => (
